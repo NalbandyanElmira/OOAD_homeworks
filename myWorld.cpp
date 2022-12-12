@@ -5,7 +5,9 @@ class Sun
 	public:
 		bool getLight(int time)
 		{
-			if (time > 7 && time < 19)
+			const int l_time = 7;
+			const int h_time = 19;
+			if (time > l_time && time < h_time)
 			{
 				return true;
 			}
@@ -90,7 +92,8 @@ int main()
 {
 	std::cout << "Hiiii!!! Welcome to my imagine world!!!" << std::endl << std::endl;
 	Frog frog;
-	for(int time = 0; time < 24; ++time)
+	const int max_time = 24;
+	for(int time = 0; time < max_time; ++time)
 	{
 		std::cout << "It is " << time << ":00 o'clock." << std::endl;
 		frog.awake_or_sleeping(time);
