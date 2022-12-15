@@ -2,6 +2,41 @@
 
 typedef enum { false, true } bool_type;
 
+bool_type getLight(int time);
+
+bool_type getAir(int time);
+
+struct Frog
+{
+	int time;
+	int weight;
+} frog;
+
+void frog_awake_or_sleeping(struct Frog* this, int time);
+
+void frog_breathes(struct Frog* this, int time);
+
+void frog_moves(struct Frog* this, int time);
+
+void frog_eatsGrass(struct Frog* this, int time);
+
+int main()
+{
+	const int max_time = 24;
+	for (int time = 0; time < max_time; ++time) 
+	{
+		printf("It is %d", time);
+		printf(":00 o'clock.\n");
+		frog_awake_or_sleeping(&frog, time);
+		frog_breathes(&frog, time);
+		frog_moves(&frog, time);
+		frog_eatsGrass(&frog, time);
+		printf("\n");
+	}
+
+	return 0;
+}
+
 bool_type getLight(int time)
 {
 	const int l_time = 7;
@@ -22,13 +57,7 @@ bool_type getAir(int time)
 	return false;
 }
 
-struct Frog
-{
-	int time;
-	int weight;
-} frog;
-
-void awake_or_sleeping(struct Frog* this, int time)
+void frog_awake_or_sleeping(struct Frog* this, int time)
 {
 	if (getLight(time))
 	{
@@ -41,7 +70,7 @@ void awake_or_sleeping(struct Frog* this, int time)
 	}
 }
 
-void breathes(struct Frog* this, int time)
+void frog_breathes(struct Frog* this, int time)
 {
 	if (getAir(time)) 
 	{
@@ -63,7 +92,7 @@ void breathes(struct Frog* this, int time)
 	} 
 }
 
-void moves(struct Frog* this, int time)
+void frog_moves(struct Frog* this, int time)
 {
 	if (getLight(time)) 
 	{
@@ -73,29 +102,14 @@ void moves(struct Frog* this, int time)
 	} 
 }
 
-void eatsGrass(struct Frog* this, int time)
+void frog_eatsGrass(struct Frog* this, int time)
 {
-	this->weight = 1;
-	if (getLight(time)) 
+	this->weight = 2;
+	if (getLight(time))
 	{
 		printf("The frog eats grass. o<---\n");
 		printf("His weight is %d", this->weight);
 		printf("kg.\n");
 		this->weight += 1;
-	} 
-}
-
-int main()
-{
-	const int max_time = 24;
-	for (int time = 0; time < max_time; ++time) 
-	{
-		printf("It is %d", time);
-		printf(":00 o'clock.\n");
-		awake_or_sleeping(&frog, time);
-		breathes(&frog, time);
-		moves(&frog, time);
-		eatsGrass(&frog, time);
-		printf("\n");
 	}
 }
