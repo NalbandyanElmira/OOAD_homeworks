@@ -3,7 +3,7 @@
 
 class Count {
 	int count = 0;
-    int order;
+    	int order;
 public:
 	void foo()
 	{
