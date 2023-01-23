@@ -29,7 +29,4 @@ int main()
 {
 	Person p;
 	p.foo();
-	// Person p2;
-	// std::cout << p.obj_order << std::endl;
-	// std::cout << p2.getName() << std::endl;
 }
