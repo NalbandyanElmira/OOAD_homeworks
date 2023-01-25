@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-// #include "book.h"
 #include "library.h"
 
 Library::Library(int c, std::vector<Book> vec)
